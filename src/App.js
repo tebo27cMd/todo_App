@@ -1,19 +1,25 @@
 
 import './App.css';
-
-
-import {signInWithGoogle} from "./config/firebase"
-
-
-
+import React, {useState,useEffect} from 'react'
+import Forgot from './forgot';
+import Login from './login';
+import {BrowserRouter as Router , Switch, Route} from 'react-router-dom';
+import{collection,getDocs} from 'firebase/firestore';
+import SignUp from './signup';
 function App() {
-  return (
-    <div>
-    <button onClick={signInWithGoogle}>Sign in With Google</button>
-  </div>
 
+return(
+
+  <Router>
+  <Switch>
+    <Route exact path="/"component={Login}></Route>
+    <Route path="/sign-up"component={SignUp}></Route>
+    <Route path="/forgot"component={Forgot}></Route>
   
-  );
+  </Switch>
+</Router>
+
+)
 }
 
 export default App;
