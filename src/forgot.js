@@ -1,8 +1,9 @@
 import React ,{useState} from 'react';
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {Link} from 'react-router-dom';
 import {sendPasswordResetEmail} from 'firebase/auth';
 import {auth} from '../src/config/firebase';
+import './App.css';
 
 function Forgot(){
 
@@ -15,12 +16,12 @@ function Forgot(){
         marginTop:'2%'
     }
 
-    let history = useHistory();
+    let navigate = useNavigate();
 
     const Forgot=(()=>{
 
         sendPasswordResetEmail(auth, email).then(()=>{
-            history.push('/');
+            navigate('/')
         }).catch((error)=>{
                 console.log(error);
         })

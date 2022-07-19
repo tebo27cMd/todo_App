@@ -1,45 +1,62 @@
 
+import ReactDOM from "react-dom/client";
 import './App.css';
-import React, {useState,useEffect} from 'react'
+import React from 'react';
 import Forgot from './forgot';
-import Login from './login';
-import {BrowserRouter as Router , Switch, Route} from 'react-router-dom';
-import{collection,getDocs} from 'firebase/firestore';
+import Login from "./login"
+import {BrowserRouter , Router, Route,Routes} from 'react-router-dom';
+import{getDocs} from 'firebase/firestore';
 import SignUp from './signup';
-import ToDo from "./todo"
-import {DisplayTask} from "./display"
+import AddTodo from "./AddTodo";
+import Todo from "./Todo";
+import {
+  collection,
+  query,
+  onSnapshot,
+  doc,
+
+  deleteDoc,
+} from "firebase/firestore";
+import { db } from "./config/firebase";
+
+
+
 function App() {
+  const [todos, setTodos] = React.useState([]);
 
-  const [task,setTask]=useState([]);
+  React.useEffect(() => {
+    const q = query(collection(db, "todos"));
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      let todosArray = [];
+      querySnapshot.forEach((doc) => {
+        todosArray.push({ ...doc.data(), id: doc.id });
+      });
+      setTodos(todosArray);
+    });
+    return () => unsub();
+  }, []);
 
-  useEffect(()=>{
-
-  })
-
-  const addingTask=((addTask,taskType)=>{
-    setTask((items)=>[...items,{
-      addTask:addTask,
-       taskType:taskType,
-    }])
-    console.log(task);
-  })
+  const handleDelete = async (id) => {
+    await deleteDoc(doc(db, "todos", id));
+  };
 
 return(
-
-  <Router>
-  <Switch>
-    <Route exact path="/"component={Login}></Route>
-    <Route path="/sign-up"component={SignUp}></Route>
-    <Route path="/forgot"component={Forgot}></Route>
-    <Route path="/todo"component={ToDo}></Route>
-
-    <Route path="/todo">
-       <ToDo list={task} add={addingTask}/>
-    </Route>
-  </Switch>
-</Router>
-
-)
+  <div className="App">
+   <BrowserRouter>
+   <Routes>
+    <Route exact path="/" element={<Login/>}/>
+    <Route path="/signup" element={<SignUp/>}/>
+    <Route  path="/forgot" element={<Forgot/>}/>
+    <Route  path="/forgot" element={<Forgot/>}/>
+    <Route path="/AddTodo" element={<AddTodo/>}/>
+   </Routes>
+   </BrowserRouter>
+</div>
+);
 }
+
+ 
+
+
 
 export default App;

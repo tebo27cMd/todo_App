@@ -1,32 +1,29 @@
 import React ,{useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from './config/firebase';
 import {signInWithGoogle} from "./config/firebase";
 import google from "./img/logo.png"
+import './App.css';
 
 
-function Login(){
+ function Login() {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState("")
 
-    let history =useHistory();
+    let navigate =useNavigate();
  
     const login=(()=>{
 
         signInWithEmailAndPassword(auth, email, password).then(()=>{
-            history.push('/todo');
+          navigate('/AddTodo')
         }).catch((error)=>{
                 console.log(error);
         })
 
      
     })
-
-
-
-
     return(
         
         <div className="container">
@@ -38,14 +35,14 @@ function Login(){
             <span className="heading">Welcome Back</span>
             <span className="heading2" >Manage Your Task Checklist Easily</span>
            <label>Email</label>
-            <input type="email" placeholder="Enter your email"onChange={(e)=>setEmail(e.target.value)} /><br></br>
+            <input className='myInputs' type="email" placeholder="Enter your email"onChange={(e)=>setEmail(e.target.value)} /><br></br>
            <label>Password</label>
-            <input type="password" placeholder="Enter your password" onChange={(e)=>setPassword(e.target.value)} />
+            <input className='myInputs' type="password" placeholder="Enter your password" onChange={(e)=>setPassword(e.target.value)} />
             
             <button className='button2' onClick={login} >
-                Log in{" "}
+                Log in
             </button>
-            <span>Don't have an account<Link to="./sign-up"> Create account here</Link></span>{" "} 
+            <span>Don't have an account<Link to="./signup"> Create account here</Link></span>{" "} 
             
 
              <span>or</span>
@@ -58,4 +55,4 @@ function Login(){
             </div>
        );  
 }
-export default Login
+export default Login;

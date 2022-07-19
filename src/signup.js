@@ -1,9 +1,13 @@
 import React,{useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import {createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from '../src/config/firebase';
 import {signInWithGoogle} from "./config/firebase";
+import './App.css';
+
+
+
 function SignUp(){
 
     const [email, setEmail]=useState('');
@@ -11,12 +15,12 @@ function SignUp(){
 
   
     
-    let history = useHistory();
+    let navigate = useNavigate();
 
     const Register=(()=>{
 
         createUserWithEmailAndPassword(auth , email, password).then(()=>{
-            history.push('/todo');
+            navigate('/AddTodo')
         }).catch((error)=>{
             console.log(error);
         })
@@ -31,9 +35,9 @@ function SignUp(){
             </div>
             <div className='rightcontainer'>
             <h1>Register Account</h1>
-            <input type="email" placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)}/><br></br>
+            <input className='myInputs' type="email" placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)}/><br></br>
 
-            <input type="password" placeholder="Enter your password"  onChange={(e)=>setPassword(e.target.value)}/>
+            <input className='myInputs'  type="password" placeholder="Enter your password"  onChange={(e)=>setPassword(e.target.value)}/>
             
             <button onClick= {Register}>Create acount</button>
             <span>or</span>

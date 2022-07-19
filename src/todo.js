@@ -1,49 +1,83 @@
-import React,{useState} from "react"
+import React from "react";
 
-import {db} from './config/firebase';
-import{addDoc ,collection } from 'firebase/firestore'
-
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 
-function ToDo(props){
+export default function Todo({ todo, handleDelete}) {
+  const [newTitle, setNewTitle] = React.useState(todo.title);
 
-    const[addTask,setAddTask]=useState('')
-    const [taskType,setTaskType]=useState('')
-
-    const collectionReF=collection(db,"task");
-    const add =(()=>{
-    const task={
-        addTask:addTask,
-        taskType:taskType
-    };
-
-     addDoc(collectionReF,task).then(()=>{
-        alert("task added succefully")
-     }).catch((error)=>{
-        console.log(error)
-     })
-     props.add(addTask,taskType);
-    })
-
-    return(
-        <div className="contain">
-          <div className="addTask">  
-             <input className="taskbar" placeholder="Add New Task" onChange={(e)=>setAddTask(e.target.value)} />    
-             <div  className="bar">   
-                 <select onChange={(e)=>setTaskType(e.target.value)} className="select">
-                    <option  >Priority</option>
-                     <option value ="Low" >Low</option>
-                     <option  value ="Medium">Medium</option>
-                     <option  value ="High">High</option>
-                 </select>
-               </div>
-               <div className="addingbutton">
-                 <button className="addbutton" onClick={add}>+</button>
-                </div>   
-         </div>
+  const handleChange = (e) => {
+    e.preventDefault();
+    if (todo.complete === true) {
+      setNewTitle(todo.title);
+    } else {
+      todo.title = "";
+      setNewTitle(e.target.value);
+    }
+  };
+  return (
+    <div className="todo">
+      {todo.priority=="Low"? (
+        <div className="action">
+        <div className="action_task"> 
+            <input
+              type="text"
+              value={todo.title === "" ? newTitle : todo.title}
+              className="list"
+              onChange={handleChange}
+              style={{borderBottom:"5px solid green"}}/>    
         </div>
+        
+          <div className="action_delete"> 
+              <button  style={{borderBottom:"4px solid green"}}  className="button-delete" onClick={() => handleDelete(todo.id)} >
+                <CheckCircleIcon id="i" />
+                
+              </button>
+         </div>
+      
+      </div>
 
-    );
+      ):todo.priority=="Medium"?(
+        <div className="action">
+        <div className="action_task"> 
+            <input
+              type="text"
+              value={todo.title === "" ? newTitle : todo.title}
+              className="list"
+              onChange={handleChange}
+              style={{borderBottom:"5px solid orange"}}/>    
+        </div>
+       
+          <div className="action_delete"> 
+              <button style={{borderBottom:"4px solid orange"}} className="button-delete" onClick={() => handleDelete(todo.id)}>
+                <CheckCircleIcon id="i" />
+              </button>
+         </div>
+      
+      </div>
+      ):(
+        <div className="action">
+        <div className="action_task"> 
+            <input
+              type="text"
+              value={todo.title === "" ? newTitle : todo.title}
+              className="list"
+              onChange={handleChange}
+              style={{borderBottom:"5px solid red"}}/>    
+        </div>
+        
+          <div className="action_delete"> 
+              <button style={{borderBottom:"4px solid red"}} className="button-delete" onClick={() => handleDelete(todo.id)}>
+                <CheckCircleIcon id="i" />
+              </button>
+         </div>
+      
+      </div>
+      )}
+      
+
+
+    
+    </div>
+  );
 }
-
-export default ToDo
