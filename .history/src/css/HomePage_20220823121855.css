@@ -1,0 +1,174 @@
+
+
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+.topPart{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 80px;
+    border-bottom: 2px solid black;
+    
+}
+
+.topPart button{
+    width: 100px;
+    margin:0px 20px 5px 0px;
+    border-radius: 5px;
+    border: none;
+    background-color: #003627;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2em;
+    
+}
+.topPart img {
+    height: 20px;
+}
+
+.topPart button:hover{
+    background-color: rgba(245, 27, 27, 0.815);
+    color: black;
+}
+
+.bottomPart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.bottomPart input{
+    margin-right: 10px;
+    height: 50px;
+    width: 500px;
+    padding-left: 20px;
+    border: none;
+    background-color: #eee;
+    border-radius: 5px;
+    
+}
+
+.bottomPart select{
+    margin-right: 10px;
+    height: 30px;
+    width: 100px;
+    border: none;
+    background-color: #5861d8;
+    border-radius: 5px;
+    color: white;
+}
+
+.bottomPart .topBtn{
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+    border: none;
+    color: #eee;
+    font-size: 1.6em;
+    background-color: #5861d8;
+    cursor: pointer;
+    
+}
+.bottomPart .CheckHigh{  
+    border-radius: 50px;
+    border: none;
+    background-color: #5861d8;
+    color: rgb(255, 255, 255);
+    font-size: 1.6em;
+    cursor: pointer;   
+}
+.bottomPart .CheckHigh:hover{
+    background-color: red;
+}
+.bottomPart .CheckMedium{  
+    border-radius: 50px;
+    border: none;
+    background-color: #5861d8;
+    color: rgb(255, 255, 255);
+    font-size: 1.6em;
+    cursor: pointer;   
+}
+.bottomPart .CheckMedium:hover{
+    background-color: yellow;
+}
+.bottomPart .CheckLow{  
+    border-radius: 50px;
+    border: none;
+    background-color: #5861d8;
+    color: rgb(255, 255, 255);
+    font-size: 1.6em;
+    cursor: pointer;   
+}
+.bottomPart .CheckLow:hover{
+    background-color: green;
+}
+
+.bottomPart button:hover{
+    background-color: #776e7625;
+    color: black;
+}
+
+input{
+height: 90px;
+}
+.input-fields {
+    display: flex;
+    align-items: center;
+    height: 130px;
+    
+}
+
+/* Task list*/
+
+
+.task-list{
+    width: 600px;
+    margin-right: 60px;
+}
+
+.item{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 5px 0px rgb(123, 126, 173);
+    
+}
+.items{
+    padding: 5px 0;
+}
+.item button{
+    border: none; 
+    border-radius: 50px;
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

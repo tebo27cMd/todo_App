@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+:root
+{
+    --btnGreen: #339eb1;
+    --beige: beige;
+    
+}
+
+.LoginPage{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 100vw;
+    height: 100vh;
+    font-family:'Roboto' ;
+}
+
+.LoginPage aside{
+    background: url(../Images/Ado.jpeg);
+    background-size: cover;
+}
+
+.LoginPage section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    
+}
+
+.LoginPage .welcome{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    font-size: 2em;
+    font-family:'Roboto' ;
+    color: #4c52ac;
+}
+
+.LoginPage .paragraph1{
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #4c52ac;
+}
+
+.LoginPage .input-control{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    width: 100%;
+    
+}
+
+.LoginPage .input-control label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+
+}
+
+.LoginPage .input-control input{
+    font-size: 1.2em;
+    height: 50px;
+    padding: 20px 10px 20px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    background-color: #eee;
+    
+}
+
+.LoginPage button{
+    width: 300px;
+    height: 50px;
+}
+.LoginPage button:hover{
+   background-color:white;
+   
+}
+.LoginPage .lgnBtn{
+    margin-top: 50px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--btnGreen);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.LoginPage .create{
+    
+    margin-top: 30px;
+}   
+
+
+Link{
+    color: var(--btnGreen);
+}
+
+.LoginPage .or{
+    font-weight: lighter;
+    font-size: 1em;
+    margin: 20px;
+}
+
+.LoginPage .signBtn{
+    margin: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 7px;
+   
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+}
+
+.logo img{
+    width: 50px;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.logo span{
+    padding-top: 7px;
+}
+
+
+
+
+
+
