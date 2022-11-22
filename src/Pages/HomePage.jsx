@@ -33,7 +33,7 @@ function HomePage() {
      alert("Item added Successfully");
     getItems();
     }
-    
+    `1`
 
     useEffect(()=>{
       getItems();

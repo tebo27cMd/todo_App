@@ -8,7 +8,7 @@ import React, { useState, useEffect } from "react";
   import {addDoc, collection,getDocs} from 'firebase/firestore';
   import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-  import google from '../image/accept.png'
+
   import logout from '../image/logout.png'
  
   
@@ -33,7 +33,7 @@ function HomePage() {
      alert("Item added Successfully");
     getItems();
     }
-    
+    `1`
 
     useEffect(()=>{
       getItems();
@@ -46,13 +46,13 @@ function HomePage() {
     return (
       <div className="AddTask">
           <div className="topPart">
-              <h1>Welcome</h1>
+              <h1 className='welcome'>Welcome</h1>
               <button><div className="tick"><img src={logout} alt="" /></div></button>
           </div>
   
           <div className="bottomPart">
             <div className="input-fields">
-              <input type="text" placeholder="Add New Task" onChange={(e)=>setTask(e.target.value)}/>
+              <input className="typeTask" type="text" placeholder="Add New Task" onChange={(e)=>setTask(e.target.value)}/>
                 <select name="priority" id="priority" onChange={(e)=>setPriority(e.target.value)}>
                     <option value="Priority">PRIORITY</option>
                     <option value="High">High</option>
@@ -74,18 +74,18 @@ function HomePage() {
                                         
                                         <div className="item" style={{borderBottom: "3px solid green"}}>
                                         <span>{item.task}</span>
-                                        <button className="complete"><div className="tick"><img src={google} alt="" /></div></button>
+                                        <button className="complete"><div className="CheckLow"><CheckCircleIcon id="i" /></div></button>
                                         </div>
                                 
                                     ):item.priority == "Medium" ? (
                                         <div className="item" style={{borderBottom: "3px solid orange"}}>
                                         <span>{item.task}</span>
-                                        <button className="complete"><div className="tick"><img src={google} alt="" /></div></button>
+                                        <button className="complete"><div className="CheckMedium"><CheckCircleIcon id="i" /></div></button>
                                         </div>
                                     ):item.priority == "High" ? (
                                         <div className="item" style={{borderBottom: "3px solid red"}}>
                                         <span>{item.task}</span>
-                                        <button className="complete"><div className="tick"><img src={google} alt="" /></div></button>
+                                        <button className="complete"><div className="CheckHigh"><CheckCircleIcon id="i" /></div></button>
         
                                         </div>
                                     ):(
