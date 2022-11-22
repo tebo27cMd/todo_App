@@ -29,11 +29,11 @@ function HomePage() {
   }
 
   const addItems = async()=>{
-     await addDoc(itemRef, {taphusk:task, priority:priority})
+     await addDoc(itemRef, {task:task, priority:priority})
      alert("Item added Successfully");
     getItems();
     }
-    
+  
 
     useEffect(()=>{
       getItems();
